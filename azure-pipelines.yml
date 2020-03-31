@@ -3,18 +3,20 @@
 # Add steps that analyze code, save build artifacts, deploy, and more:
 # https://docs.microsoft.com/azure/devops/pipelines/languages/java
 
-trigger:
+pr:
 - master
 
 strategy:
   matrix:
-    linux-jdk10:
+    linux-jdk8:
       imageName: "ubuntu-16.04"
-      jdk_version: "1.10"
-    mac-jdk-10:
+      jdk_version: "1.8"
+    mac-jdk-8:
       imageName: "macos-10.14"
-    windows-jdk11:
+      jdk_version: "1.8"
+    windows-jdk7:
       imageName: "vs2017-win2016"
+      jdk_version: "1.7"
   maxParallel: 3
 
 pool:

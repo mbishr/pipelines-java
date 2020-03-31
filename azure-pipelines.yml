@@ -14,14 +14,12 @@ strategy:
       imageName: "macos-10.14"
     windows:
       imageName: "vs2017-win2016"
-  maxParallel: 3
 
-  matrix:
     jdk10:
       jdk_version: "1.10"
     jdk11:
       jdk_version: "1.11"
-  maxparallel: 2
+  maxparallel: 3
 
 
 pool:

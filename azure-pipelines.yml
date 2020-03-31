@@ -15,7 +15,7 @@ strategy:
       imageName: "macos-10.14"
     windows-jdk11:
       imageName: "vs2017-win2016"
-  maxparallel: 3
+  maxParallel: 3
 
 pool:
   vmImage: $(imagename)

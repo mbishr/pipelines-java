@@ -7,18 +7,15 @@ trigger:
 - master
 
 jobs:
-- job: Windows
-  pool:
-    vmImage: 'vs2017-win2016'
+- job: InitialA
   steps:
-  - script: echo hello from Windows
-- job: macOS
-  pool:
-    vmImage: 'macOS-10.14'
+  - script: echo hello from initial A
+- job: InitialB
   steps:
-  - script: echo hello from macOS
-- job: Linux
-  pool:
-    vmImage: 'ubuntu-16.04'
+  - script: echo hello from initial B
+- job: Subsequent
+  dependsOn:
+  - InitialA
+  - InitialB
   steps:
-  - script: echo hello from Linux
+  - script: echo hello from subsequent

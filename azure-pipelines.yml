@@ -11,8 +11,9 @@ schedules:
   branches:
     include:
     - master
+    - release
     exclude:
-      - release/*
+      - release/ancient/*
 
 jobs:
 - job: Windows

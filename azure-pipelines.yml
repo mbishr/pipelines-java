@@ -8,7 +8,7 @@ trigger:
 
   pool:
     vmImage: 'Ubuntu-16.04'
-
+    
   steps:
   - task: Maven@3
     inputs:
@@ -20,13 +20,3 @@ trigger:
       publishJUnitResults: false
       testResultsFiles: '**/surefire-reports/TEST-*.xml'
       goals: 'package'
-
-schedules:
-- cron: "0 0 * * *"
-  displayName: Daily midnight build
-  branches:
-    include:
-    - master
-    - releases/*
-    exclude:
-    - releases

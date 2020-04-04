@@ -11,3 +11,11 @@ trigger: none
     include:
     - master
   always: true
+
+  schedules:
+- cron: "0 0 * * *"
+  displayName: Daily midnight build
+  branches:
+    include:
+    - master
+  

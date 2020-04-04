@@ -6,29 +6,17 @@
 trigger:
 - master
 
-# test and upload my code as an artifact named WebSite
 jobs:
-- job: Build
+  # track deployments on the environment
+- deployment: DeployWeb
+  displayName: deploy Web App
   pool:
-    vmImage: 'ubuntu-16.04'
-  steps:
-  - script: sudo apt-get update && sudo apt-get install nodejs && npm test
-  - task: PublishBuildArtifacts@1
-    inputs:
-      pathtoPublish: '$(System.DefaultWorkingDirectory)'
-      artifactName: WebSite
-
-# download the artifact and deploy it only if the build job succeeded
-- job: Deploy
-  pool:
-    vmImage: 'ubuntu-16.04'
-  steps:
-  - checkout: none #skip checking out the default repository resource
-  - task: DownloadBuildArtifacts@0
-    displayName: 'Download Build Artifacts'
-    inputs:
-      artifactName: WebSite
-      downloadPath: $(System.DefaultWorkingDirectory)
-
-  dependsOn: Build
-  condition: succeeded()
+    vmImage: 'Ubuntu-16.04'
+  # creates an environment if it doesn't exist
+  environment: 'smarthotel-dev'
+  strategy:
+    # default deployment strategy, more coming...
+    runOnce:
+      deploy:
+        steps:
+        - script: echo my first deployment

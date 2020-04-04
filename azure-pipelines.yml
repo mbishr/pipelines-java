@@ -22,3 +22,10 @@ jobs:
     vmImage: 'ubuntu-16.04'
   steps:
   - script: echo hello from Linux
+
+  schedules:
+- cron: "0 0 * * *"
+  displayName: Daily midnight build
+  branches:
+    include:
+    - master

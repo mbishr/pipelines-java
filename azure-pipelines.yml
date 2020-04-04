@@ -12,7 +12,7 @@ jobs:
   pool:
     vmImage: 'ubuntu-16.04'
   steps:
-  - script: apt-get update && apt-get install nodejs && npm test
+  - script: sudo apt-get update && sudo apt-get install nodejs && npm test
   - task: PublishBuildArtifacts@1
     inputs:
       pathtoPublish: '$(System.DefaultWorkingDirectory)'

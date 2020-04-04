@@ -3,32 +3,21 @@
 # Add steps that analyze code, save build artifacts, deploy, and more:
 # https://docs.microsoft.com/azure/devops/pipelines/languages/java
 
-trigger: none
+trigger:
+- master 
 
-schedules:
-- cron: "0 12 * * 0"
-  displayName: Daily midnight build
-  branches:
-    include:
-    - master
-    - release
-    exclude:
-      - release/ancient/*
-  always: true
-jobs:
-- job: Windows1
-  pool:
-    vmImage: 'vs2017-win2016'
-  steps:
-  - script: echo hello from Windows
-- job: macOS
-  pool:
-    vmImage: 'macOS-10.14'
-  steps:
-  - script: echo hello from macOS
-- job: Linux
-  pool:
-    vmImage: 'ubuntu-16.04'
-  steps:
-  - script: echo hello from Linux
+stages:
+  - stage: deploy
+    jobs:
+    - deployment: DeployWeb
+      displayName: deploy Web App
+      pool:
+        vmImage: 'Ubuntu-latest'
+      # creates an environment if it doesn't exist
+      environment: 'smarthotel-dev'
+      strategy:
+        runOnce:
+          deploy:
+            steps:
+            - script: echo Hello world
 

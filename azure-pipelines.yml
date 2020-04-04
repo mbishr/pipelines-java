@@ -14,7 +14,7 @@ schedules:
     - release
     exclude:
       - release/ancient/*
-
+  always: true
 jobs:
 - job: Windows1
   pool:

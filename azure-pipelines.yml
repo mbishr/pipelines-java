@@ -16,7 +16,7 @@ schedules:
       - release/ancient/*
 
 jobs:
-- job: Windows
+- job: Windows1
   pool:
     vmImage: 'vs2017-win2016'
   steps:
